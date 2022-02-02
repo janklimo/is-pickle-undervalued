@@ -45,6 +45,9 @@ const options: Highcharts.Options = {
     labels: {
       style: {
         color: grayLight,
+        fontSize: "13px",
+        fontFamily: "Montserrat",
+        fontWeight: "bold",
       },
     },
   },
@@ -57,9 +60,11 @@ const options: Highcharts.Options = {
     labels: {
       style: {
         color: grayLight,
+        fontFamily: "Montserrat",
       },
     },
   },
+  legend: { enabled: false },
   tooltip: {
     enabled: false,
   },
@@ -96,6 +101,15 @@ const options: Highcharts.Options = {
           color: orange,
         },
       ],
+      dataLabels: {
+        enabled: true,
+        color: "white",
+        format: "{point.y:.1f}", // one decimal
+        style: {
+          fontSize: "13px",
+          fontFamily: "Montserrat",
+        },
+      },
     },
   ],
 };
@@ -108,7 +122,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="h-[675px] w-[1200px] bg-slate-400">
+      <div className="h-[675px] w-[1200px] border border-green-300 p-3">
         <HighchartsReact highcharts={Highcharts} options={options} />
       </div>
     </div>
