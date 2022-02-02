@@ -6,26 +6,46 @@ import config from "../tailwind.config";
 
 const blackLight = config.theme.extend.colors.black.light;
 const grayOutline = config.theme.extend.colors.gray.outline;
+const grayLight = config.theme.extend.colors.gray.light;
 const greenLight = config.theme.extend.colors.green.light;
+const orange = config.theme.extend.colors.orange.DEFAULT;
 
 const options: Highcharts.Options = {
   chart: {
     type: "bar",
     backgroundColor: blackLight,
     animation: false,
+    height: 520,
   },
   credits: {
     enabled: false,
   },
+  colors: [greenLight],
   title: {
     style: {
       display: "none",
     },
   },
   xAxis: {
-    categories: ["Alpha Finance", "Maple Finance", "Synthetix", "Aave", "dYdX"],
+    categories: [
+      "Alpha Finance",
+      "PoolTogether",
+      "Maple Finance",
+      "Synthetix",
+      "Helium",
+      "Aave",
+      "Axie Infinity",
+      "Compound",
+      "Liquity",
+      "Pickle Finance",
+    ],
     title: {
       text: null,
+    },
+    labels: {
+      style: {
+        color: grayLight,
+      },
     },
   },
   yAxis: {
@@ -35,7 +55,9 @@ const options: Highcharts.Options = {
       text: null,
     },
     labels: {
-      overflow: "justify",
+      style: {
+        color: grayLight,
+      },
     },
   },
   tooltip: {
@@ -43,12 +65,11 @@ const options: Highcharts.Options = {
   },
   plotOptions: {
     bar: {
-      borderRadius: 5,
+      borderRadius: 10,
       borderWidth: 0,
       dataLabels: {
         enabled: true,
       },
-      color: greenLight,
     },
     series: {
       animation: {
@@ -60,7 +81,21 @@ const options: Highcharts.Options = {
     {
       name: "P/E Ratios",
       type: "bar",
-      data: [169, 77, 42, 18, 4],
+      data: [
+        169,
+        130,
+        101,
+        78,
+        69,
+        42,
+        27,
+        21,
+        18,
+        {
+          y: 7.6,
+          color: orange,
+        },
+      ],
     },
   ],
 };
