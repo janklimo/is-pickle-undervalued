@@ -1,0 +1,14 @@
+name: Daily snapshot
+on:
+  schedule:
+    # Daily at 10am
+    - cron: "0 10 * * *"
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Record daily snapshot
+        run: |
+          curl --request POST \
+          --url 'https://is-pickle-undervalued.vercel.app/api/snapshot' \
+          --header 'Authorization: Bearer ${{ secrets.SECRET }}'
