@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "DillSnapshot" ADD COLUMN     "totalSupply" DOUBLE PRECISION NOT NULL DEFAULT 0;
