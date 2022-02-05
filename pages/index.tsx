@@ -15,7 +15,9 @@ const options: Highcharts.Options = {
     type: "bar",
     backgroundColor: blackLight,
     animation: false,
-    height: 520,
+    height: 550,
+    spacingLeft: 40,
+    spacingRight: 40,
   },
   credits: {
     enabled: false,
@@ -75,6 +77,7 @@ const options: Highcharts.Options = {
       dataLabels: {
         enabled: true,
       },
+      pointWidth: 26,
     },
     series: {
       animation: {
