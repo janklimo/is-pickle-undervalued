@@ -1,5 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
+
 import { getTotalSupply } from "../../utils/services/pickleContract";
 import { getDillDetails } from "../../utils/services/core";
 
@@ -13,7 +17,14 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       const totalSupply = await getTotalSupply();
       const dillDetails = await getDillDetails();
 
-      res.status(200).json({ totalSupply, ...dillDetails });
+      const snapshot = await prisma.dillSnapshot.create({
+        data: {
+          totalSupply,
+          ...dillDetails,
+        },
+      });
+
+      res.status(200).json({ ...snapshot });
     } else {
       res.status(401).send({ error: "Incorrect secret." });
     }
